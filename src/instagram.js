@@ -19,7 +19,7 @@
     data = $.extend(data, {
       access_token: options.accessToken,
       client_id: options.clientId,
-      count: options.count
+      count: options.count,
     });
 
     if (options.url != null) {
@@ -61,6 +61,7 @@
       data: request.data,
       success: function(response) {
         that.trigger('didLoadInstagram', response);
+        options.onSuccess(response);
       }
     });
 
@@ -77,7 +78,8 @@
     hash: null,
     userId: null,
     location: null,
-    search: null
+    search: null,
+    onSuccess: function(){}
   };
 
 }(jQuery));

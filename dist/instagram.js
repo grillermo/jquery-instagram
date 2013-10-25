@@ -1,4 +1,4 @@
-/*! jQuery Instagram - v0.3.0 - 2013-08-10
+/*! jQuery Instagram - v0.3.0 - 2013-10-25
 * http://potomak.github.com/jquery-instagram
 * Copyright (c) 2013 Giovanni Cappellotto; Licensed MIT */
 (function($) {
@@ -14,7 +14,7 @@
     data = $.extend(data, {
       access_token: options.accessToken,
       client_id: options.clientId,
-      count: options.count
+      count: options.count,
     });
 
     if (options.url != null) {
@@ -56,6 +56,7 @@
       data: request.data,
       success: function(response) {
         that.trigger('didLoadInstagram', response);
+        options.onSuccess(response);
       }
     });
 
@@ -72,7 +73,8 @@
     hash: null,
     userId: null,
     location: null,
-    search: null
+    search: null,
+    onSuccess: function(){}
   };
 
 }(jQuery));
